@@ -161,7 +161,7 @@ Get value of a specific environment variable from additionalEnv if it exists
 {{/*
     If DATABASE_URL is set, we do nothing in databaseEnv.
 */}}
-{{- else -}}
+{{- else if .Values.postgresql.deploy -}}
 - name: DATABASE_HOST
   value: {{ include "langfuse.postgresql.hostname" . | quote }}
 {{- if .Values.postgresql.port }}
